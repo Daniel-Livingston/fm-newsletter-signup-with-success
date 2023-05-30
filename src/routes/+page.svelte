@@ -1,14 +1,27 @@
 <script lang="ts">
 	let email = '';
 	let showSuccessMessage = false;
+	let emailIsEmpty = false;
+	let emailIsInvalid = false;
 
 	function onSubmit() {
-		if (!email || !email.match(/.+@.+\..+/)) {
+		if (!email) {
 			showSuccessMessage = false;
+			emailIsEmpty = true;
+			emailIsInvalid = false;
+			return;
+		}
+
+		if (!email.match(/.+@.+\..+/)) {
+			showSuccessMessage = false;
+			emailIsEmpty = false;
+			emailIsInvalid = true;
 			return;
 		}
 
 		showSuccessMessage = true;
+		emailIsEmpty = false;
+		emailIsInvalid = false;
 	}
 
 	function onDismiss() {
@@ -58,9 +71,18 @@
 				</ul>
 
 				<form action="" on:submit={onSubmit} novalidate>
-					<label for="email">Email address</label>
+					<label for="email">
+						Email address
+
+						{#if emailIsEmpty}
+							<span class="error">Email required</span>
+						{:else if emailIsInvalid}
+							<span class="error">Valid email required</span>
+						{/if}
+					</label>
 					<input
 						type="email"
+						class:error={emailIsEmpty || emailIsInvalid}
 						name="email"
 						id="email"
 						placeholder="email@company.com"
@@ -155,8 +177,14 @@
 
 	label {
 		color: var(--dark-slate);
+		display: flex;
 		font-size: 0.75rem;
 		font-weight: 700;
+	}
+
+	span.error {
+		color: var(--tomato);
+		margin-inline-start: auto;
 	}
 
 	input {
@@ -170,9 +198,24 @@
 		width: 100%;
 	}
 
+	input::placeholder {
+		color: var(--charcoal);
+	}
+
 	input:focus {
 		border-color: var(--dark-slate);
 		color: var(--dark-slate);
+	}
+
+	input.error {
+		background-color: var(--tomato-light);
+		border-color: var(--tomato);
+		color: var(--tomato-dark);
+	}
+
+	input.error::placeholder {
+		color: var(--tomato-dark);
+		font-weight: 700;
 	}
 
 	button {

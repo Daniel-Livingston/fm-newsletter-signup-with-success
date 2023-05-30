@@ -10,7 +10,9 @@ body {
 }
 
 :root {
+	--tomato-dark: hsl(4, 100%, 60%);
 	--tomato: hsl(4, 100%, 67%);
+	--tomato-light: hsla(4, 100%, 67%, 0.1);
 	--pink: hsl(346, 100%, 66%);
 	--dark-slate: hsl(234, 29%, 20%);
 	--charcoal: hsl(235, 18%, 26%);
