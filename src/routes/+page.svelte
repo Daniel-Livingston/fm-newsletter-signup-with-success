@@ -218,8 +218,12 @@
 			padding: 4rem;
 		}
 
+		div.center-vertical {
+			padding: 0;
+		}
+
 		div.success-content button {
-			margin-top: 2rem;
+			margin-top: 2.5rem;
 		}
 
 		img.mobile-banner {
@@ -248,7 +252,16 @@
 		}
 
 		h1 {
-			font-size: 3rem;
+			font-size: 3.4rem;
+			margin-top: 3rem;
+		}
+
+		p {
+			margin-top: 1.5rem;
+		}
+
+		ul {
+			margin-top: 1.5rem;
 		}
 
 		img.desktop-banner {
