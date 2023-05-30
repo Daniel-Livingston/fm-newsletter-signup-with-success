@@ -7,31 +7,41 @@
 </svelte:head>
 
 <main>
-	<img src="/illustration-sign-up-mobile.svg" alt="" />
+	<img class="mobile-banner" src="/illustration-sign-up-mobile.svg" alt="" />
 
 	<div class="content">
-		<h1>Stay updated!</h1>
+		<div class="desktop-left">
+			<h1>Stay updated!</h1>
 
-		<p>Join 60,000 product managers receiving monthly updates on:</p>
+			<p>Join 60,000 product managers receiving monthly updates on:</p>
 
-		<ul>
-			<li>Product discovery and building what matters</li>
+			<ul>
+				<li>Product discovery and building what matters</li>
 
-			<li>Measuring to ensure updates are a success</li>
+				<li>Measuring to ensure updates are a success</li>
 
-			<li>And much more!</li>
-		</ul>
+				<li>And much more!</li>
+			</ul>
 
-		<form action="">
-			<label for="email">Email address</label>
-			<input type="email" name="email" id="email" placeholder="email@company.com" />
+			<form action="">
+				<label for="email">Email address</label>
+				<input type="email" name="email" id="email" placeholder="email@company.com" />
 
-			<button type="submit">Subscribe to monthly newsletter</button>
-		</form>
+				<button type="submit">Subscribe to monthly newsletter</button>
+			</form>
+		</div>
+
+		<div class="desktop-right">
+			<img class="desktop-banner" src="/illustration-sign-up-desktop.svg" alt="" />
+		</div>
 	</div>
 </main>
 
 <style>
+	img.mobile-banner {
+		width: 100%;
+	}
+
 	div.content {
 		padding: 1.5rem;
 	}
@@ -95,5 +105,62 @@
 		margin-top: 1.5rem;
 		padding: 1rem 1.25rem;
 		width: 100%;
+	}
+
+	img.desktop-banner {
+		display: none;
+	}
+
+	/* Desktop styles. */
+	@media (min-width: 48em) {
+		:global(html) {
+			height: 100%;
+		}
+
+		:global(body) {
+			background-color: var(--dark-slate);
+			height: 100%;
+		}
+
+		:global(main) {
+			display: grid;
+			height: 100%;
+			padding: 1rem;
+			place-content: center;
+		}
+
+		img.mobile-banner {
+			display: none;
+		}
+
+		div.content {
+			border-radius: 2rem;
+			display: flex;
+			background-color: var(--white);
+		}
+
+		div.desktop-left,
+		div.desktop-right {
+			flex: 1 1 100%;
+		}
+
+		div.desktop-left {
+			max-width: 450px;
+			padding: 2rem;
+		}
+
+		div.desktop-right {
+			align-self: center;
+			max-width: 400px;
+		}
+
+		h1 {
+			font-size: 3rem;
+		}
+
+		img.desktop-banner {
+			display: block;
+			width: 100%;
+		}
 	}
 </style>
