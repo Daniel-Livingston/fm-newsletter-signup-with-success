@@ -1,3 +1,17 @@
+<script lang="ts">
+	let email = '';
+	let showSuccessMessage = false;
+
+	function onSubmit() {
+		if (!email || !email.match(/.+@.+\..+/)) {
+			showSuccessMessage = false;
+			return;
+		}
+
+		showSuccessMessage = true;
+	}
+</script>
+
 <svelte:head>
 	<title>Subscribe to our newsletter!</title>
 	<meta
@@ -7,37 +21,88 @@
 </svelte:head>
 
 <main>
-	<img class="mobile-banner" src="/illustration-sign-up-mobile.svg" alt="" />
+	{#if showSuccessMessage}
+		<div class="success-content">
+			<div class="center-vertical">
+				<img src="/icon-success.svg" alt="" />
 
-	<div class="content">
-		<div class="desktop-left">
-			<h1>Stay updated!</h1>
+				<h1>Thanks for subscribing!</h1>
 
-			<p>Join 60,000 product managers receiving monthly updates on:</p>
+				<p>
+					A confirmation email has been sent to <b>{email}</b>. Please open it and click the button
+					inside to confirm your subscription.
+				</p>
+			</div>
 
-			<ul>
-				<li>Product discovery and building what matters</li>
-
-				<li>Measuring to ensure updates are a success</li>
-
-				<li>And much more!</li>
-			</ul>
-
-			<form action="">
-				<label for="email">Email address</label>
-				<input type="email" name="email" id="email" placeholder="email@company.com" />
-
-				<button type="submit">Subscribe to monthly newsletter</button>
-			</form>
+			<button>Dismiss message</button>
 		</div>
+	{:else}
+		<img class="mobile-banner" src="/illustration-sign-up-mobile.svg" alt="" />
 
-		<div class="desktop-right">
-			<img class="desktop-banner" src="/illustration-sign-up-desktop.svg" alt="" />
+		<div class="content">
+			<div class="desktop-left">
+				<h1>Stay updated!</h1>
+
+				<p>Join 60,000 product managers receiving monthly updates on:</p>
+
+				<ul>
+					<li>Product discovery and building what matters</li>
+
+					<li>Measuring to ensure updates are a success</li>
+
+					<li>And much more!</li>
+				</ul>
+
+				<form action="" on:submit={onSubmit} novalidate>
+					<label for="email">Email address</label>
+					<input
+						type="email"
+						name="email"
+						id="email"
+						placeholder="email@company.com"
+						bind:value={email}
+					/>
+
+					<button type="submit">Subscribe to monthly newsletter</button>
+				</form>
+			</div>
+
+			<div class="desktop-right">
+				<img class="desktop-banner" src="/illustration-sign-up-desktop.svg" alt="" />
+			</div>
 		</div>
-	</div>
+	{/if}
 </main>
 
 <style>
+	:global(html, body, main) {
+		height: 100%;
+	}
+
+	div.success-content {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		justify-content: center;
+		padding: 1.5rem;
+	}
+
+	div.center-vertical {
+		margin: auto 0;
+	}
+
+	div.success-content h1 {
+		margin-top: 2rem;
+	}
+
+	div.success-content button {
+		margin-top: auto;
+	}
+
+	b {
+		color: var(--dark-slate);
+	}
+
 	img.mobile-banner {
 		width: 100%;
 	}
@@ -47,8 +112,10 @@
 	}
 
 	h1 {
+		color: var(--dark-slate);
 		font-size: 2.5rem;
 		font-weight: 700;
+		line-height: 1;
 	}
 
 	p {
@@ -126,20 +193,25 @@
 
 	/* Desktop styles. */
 	@media (min-width: 48em) {
-		:global(html) {
-			height: 100%;
-		}
-
 		:global(body) {
 			background-color: var(--dark-slate);
-			height: 100%;
 		}
 
 		:global(main) {
 			display: grid;
-			height: 100%;
 			padding: 1rem;
 			place-content: center;
+		}
+
+		div.success-content {
+			background-color: var(--white);
+			border-radius: 2rem;
+			max-width: 31.5rem;
+			padding: 4rem;
+		}
+
+		div.success-content button {
+			margin-top: 2rem;
 		}
 
 		img.mobile-banner {
