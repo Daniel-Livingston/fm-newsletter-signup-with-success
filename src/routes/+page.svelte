@@ -10,6 +10,10 @@
 
 		showSuccessMessage = true;
 	}
+
+	function onDismiss() {
+		showSuccessMessage = false;
+	}
 </script>
 
 <svelte:head>
@@ -34,7 +38,7 @@
 				</p>
 			</div>
 
-			<button>Dismiss message</button>
+			<button type="button" on:click={onDismiss}>Dismiss message</button>
 		</div>
 	{:else}
 		<img class="mobile-banner" src="/illustration-sign-up-mobile.svg" alt="" />
@@ -84,15 +88,16 @@
 		flex-direction: column;
 		height: 100%;
 		justify-content: center;
-		padding: 1.5rem;
+		padding: 2.5rem 1.5rem;
 	}
 
 	div.center-vertical {
 		margin: auto 0;
+		padding-bottom: 3rem;
 	}
 
 	div.success-content h1 {
-		margin-top: 2rem;
+		margin-top: 2.25rem;
 	}
 
 	div.success-content button {
@@ -116,9 +121,11 @@
 		font-size: 2.5rem;
 		font-weight: 700;
 		line-height: 1;
+		margin-top: 1rem;
 	}
 
 	p {
+		color: var(--charcoal);
 		margin-top: 1.25rem;
 	}
 
@@ -147,12 +154,13 @@
 	}
 
 	label {
+		color: var(--dark-slate);
 		font-size: 0.75rem;
 		font-weight: 700;
 	}
 
 	input {
-		border: 1px solid var(--grey);
+		border: 1px solid #c3c3c3;
 		border-radius: 0.5rem;
 		color: var(--charcoal);
 		font-size: 1rem;
@@ -176,7 +184,7 @@
 		font-size: 1rem;
 		font-weight: bold;
 		margin-top: 1.5rem;
-		padding: 1rem 1.25rem;
+		padding: 1.125rem 1.25rem;
 		width: 100%;
 	}
 
