@@ -16,9 +16,39 @@ Users should be able to:
 - View the optimal layout for the interface depending on their device's screen size
 - See hover and focus states for all interactive elements on the page
 
-### Screenshot
+### Screenshots
 
-![](./screenshot.jpg)
+#### Mobile
+
+The base page on mobile:
+
+![Mobile screenshot](./screenshots/mobile.png)
+
+The base page with an email error on mobile:
+
+![Mobile screenshot with email error](./screenshots/mobile-validation.png)
+
+The success page on mobile:
+
+![Mobile screenshot of the success page](./screenshots/mobile-success.png)
+
+#### Desktop
+
+The base page on desktop:
+
+![Desktop screenshot](./screenshots/desktop.png)
+
+The base page with an email error on desktop:
+
+![Desktop screenshot with email error](./screenshots/desktop-validation.png)
+
+The base page on desktop with the button's active state:
+
+![Desktop screenshot with button's active state](./screenshots/desktop-active.png)
+
+The success page on desktop:
+
+![Desktop screenshot of the success page](./screenshots/desktop-success.png)
 
 ### Links
 
