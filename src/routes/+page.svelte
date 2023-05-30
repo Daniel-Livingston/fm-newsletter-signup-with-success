@@ -95,16 +95,29 @@
 		width: 100%;
 	}
 
+	input:focus {
+		border-color: var(--dark-slate);
+		color: var(--dark-slate);
+	}
+
 	button {
-		background-color: var(--dark-slate);
+		background: var(--dark-slate);
 		border: 1px solid var(--dark-slate);
 		border-radius: 0.5rem;
 		color: var(--white);
+		cursor: pointer;
 		font-size: 1rem;
 		font-weight: bold;
 		margin-top: 1.5rem;
 		padding: 1rem 1.25rem;
 		width: 100%;
+	}
+
+	button:hover,
+	button:focus {
+		background: linear-gradient(135deg, var(--pink) 0%, var(--tomato) 50%);
+		border-color: transparent;
+		outline: none;
 	}
 
 	img.desktop-banner {
