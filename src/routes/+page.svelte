@@ -1,4 +1,9 @@
 <script lang="ts">
+	import '$lib/main.css';
+	import successIcon from '$lib/images/icon-success.svg';
+	import desktopBanner from '$lib/images/illustration-sign-up-desktop.svg';
+	import mobileBanner from '$lib/images/illustration-sign-up-mobile.svg';
+
 	let email = '';
 	let showSuccessMessage = false;
 	let emailIsEmpty = false;
@@ -41,7 +46,7 @@
 	{#if showSuccessMessage}
 		<div class="success-content">
 			<div class="center-vertical">
-				<img src="/icon-success.svg" alt="" />
+				<img src={successIcon} alt="" />
 
 				<h1>Thanks for subscribing!</h1>
 
@@ -54,7 +59,7 @@
 			<button type="button" on:click={onDismiss}>Dismiss message</button>
 		</div>
 	{:else}
-		<img class="mobile-banner" src="/illustration-sign-up-mobile.svg" alt="" />
+		<img class="mobile-banner" src={mobileBanner} alt="" />
 
 		<div class="content">
 			<div class="desktop-left">
@@ -94,7 +99,7 @@
 			</div>
 
 			<div class="desktop-right">
-				<img class="desktop-banner" src="/illustration-sign-up-desktop.svg" alt="" />
+				<img class="desktop-banner" src={desktopBanner} alt="" />
 			</div>
 		</div>
 	{/if}
